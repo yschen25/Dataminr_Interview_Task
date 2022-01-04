@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+type OpenDropdownProps = { isOpenDropdown: boolean };
+
 const DropdownWrapper = styled.div`
   width: 20%;
   height: 40px;
@@ -11,26 +13,11 @@ const DropdownWrapper = styled.div`
   position: absolute;
   right: 100px;
   cursor: pointer;
-
-  &:after {
-    content: "";
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border-top: 2px solid #fff;
-    border-right: 2px solid #fff;
-    transform: rotate(-45deg);
-    right: 15px;
-    top: 20px;
-    transition: 0.5s;
-    z-index: 2;
-  }
 `;
 
-const DropdownMenu = styled.ul`
-  display: flex;
+const DropdownMenu = styled.ul<OpenDropdownProps>`
+  display: ${(props) => (props.isOpenDropdown ? "flex" : "none")}
   flex-direction: column;
-  row-gap: 12px;
   background: #000;
   text-align: center;
   margin-top: 10px;
@@ -39,12 +26,36 @@ const DropdownMenu = styled.ul`
   padding: 0;
   position: absolute;
   left: 0;
-  top: 15px;
+  top: 30px;
   z-index: 1;
+  transition: 0.3s;
 `;
 
 const DropdownList = styled.li`
-  border-top: 2px solid #444444;
+  border-top: 1px solid #444;
+  line-height: 30px;
 `;
 
-export { DropdownWrapper, DropdownMenu, DropdownList };
+const Num = styled.span`
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  line-height: 30px;
+`;
+
+const Arrow = styled.div<OpenDropdownProps>`
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  transform: ${(props) =>
+    props.isOpenDropdown ? "rotate(135deg)" : " rotate(-45deg)"};
+  right: 10px;
+  top: 45%;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 2;
+`;
+
+export { DropdownWrapper, DropdownMenu, DropdownList, Num, Arrow };

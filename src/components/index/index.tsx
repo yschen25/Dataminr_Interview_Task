@@ -1,9 +1,7 @@
-import * as React from "react";
-import { connect } from "react-redux";
-import { updateRates } from "../../action/updateRates";
+import React from "react";
 
 import { Title, Gcontainer, Scontainer, Acontainer, GridProps } from "./style";
-import Options from "../Option/option";
+import Options from "../Options/options";
 import GeneralWrapper from "../GeneralWrapper/generalWrapper";
 import AlertsWrapper from "../AlertsWrapper/alertsWrapper";
 import SettingsWrapper from "../SettingsWrapper/settingsWrapper";
@@ -12,6 +10,8 @@ import { all_settings } from "../../../schema/";
 import { Layout, LayoutType } from "../../../schema/type";
 
 const Index = () => {
+
+  // Define the specific container and wrapper for each group
   const getContainer = (
     layout: Layout
   ): [React.ComponentType<GridProps>, React.ComponentType] => {
@@ -29,13 +29,21 @@ const Index = () => {
 
   return (
     <>
-      {all_settings.map((item) => {
+      {all_settings.map((item, idx) => {
         const [Container, Wrapper] = getContainer(item.layout);
 
         return (
-          <Container grid={item.layout.percent}>
-            <Title>{item.title.toUpperCase()}</Title>
-            <Options wrapperComponent={Wrapper} item={item} />
+          <Container
+            key={`${idx}-conatiner`}
+            data-testid="index"
+            grid={item.layout.percent}
+          >
+            <Title key={`${idx}-title`}>{item.title.toUpperCase()}</Title>
+            <Options
+              key={`${idx}-options`}
+              wrapperComponent={Wrapper}
+              item={item}
+            />
           </Container>
         );
       })}
@@ -43,14 +51,4 @@ const Index = () => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  dispatchUpdateRatesStates: (rates) => {
-    dispatch(updateRates(rates));
-  },
-});
-
-const mapStateToProps = (state) => ({
-  rates: state.currencyReducer.rates,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+export default Index;

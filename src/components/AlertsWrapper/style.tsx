@@ -8,7 +8,7 @@ const Awrapper = styled.div`
   padding: 10px;
   width: 100%;
   position: relative;
-  background: #222;
+  background: #3a3a3a;
   color: #fff;
   border-radius: 5px;
   margin-bottom: 5px;

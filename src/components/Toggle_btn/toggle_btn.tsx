@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { ToggleContainer, ToggleKnob } from "./style";
 
-const ToggleBtn = (props: { enabled: boolean }) => {
-  const [toggleBgProps, updateToggleBgProps] = useState(props.enabled);
-
-  const enableOrDisableOption = () => {
-    updateToggleBgProps(!toggleBgProps);
-  };
-
+const ToggleBtn = (props: {
+  enabled: boolean;
+  text: string;
+  onClick: (enabled: boolean) => void;
+}) => {
   return (
-    <ToggleContainer enabled={toggleBgProps} onClick={enableOrDisableOption}>
-      <ToggleKnob enabled={toggleBgProps} />
+    <ToggleContainer
+      key={`${props.text}-toggleContainer`}
+      enabled={props.enabled}
+      onClick={() => props.onClick(!props.enabled)}
+    >
+      <ToggleKnob
+        key={`${props.text}-toggleKnob`}
+        enabled={props.enabled}
+      />
     </ToggleContainer>
   );
 };

@@ -1,17 +1,36 @@
 # Dataminr Assignment
 
-## Basic concept 
-
-<br/>
-
 ## Technologies and tools
 
 * React
 * TypeScript
-* Redux
 * Jest
 * React testing library
 * Styled component
+
+<br/>
+
+## Basic concept
+
+* Drive the data and layout of form by using dynamic schema: 
+  schema/setting/*.ts
+
+* Prevent error codings by assigning the rules of type expressions: 
+  schema/type.ts
+
+* Assembling reusable components:
+  src/components/
+
+* Avoid bugs and code debet by writing test with Jest and React testing library:
+  __test__/integration/integration.test.tsx
+
+
+<br/>
+
+## Can be improved
+
+* Use redux to control and store the setting data
+* Import the data from database
 
 <br/>
 
@@ -48,13 +67,3 @@ Bundle the files with base and prod webpack config
 ```
 npm run prod 
 ```
-
-<br/>
-
-## Can be improved
-
-
-<br/>
-
-## APP functionality expand
-

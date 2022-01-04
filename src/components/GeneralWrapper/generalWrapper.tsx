@@ -1,4 +1,3 @@
-import React from "react";
 import { Gwrapper } from "./style";
 
 const GeneralWrapper = Gwrapper;

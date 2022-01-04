@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Swrapper } from "./../SettingsWrapper/style";
 
 type GridProps = { grid: number };
 

@@ -44,7 +44,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background: #0D0D0F;
-    min-height: 100vh;
+    min-height: 150vh;
   }
 
   #app {

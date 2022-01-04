@@ -1,16 +1,27 @@
 import React from "react";
-import { DropdownWrapper, DropdownMenu, DropdownList } from "./style";
+import { DropdownWrapper, DropdownMenu, DropdownList, Num, Arrow } from "./style";
 
-const Dropdown = (props) => {
-
+const Dropdown = (props: {
+  num: number;
+  isOpenDropdown: boolean;
+  toggleDropdown: () => void;
+}) => {
   return (
-    <DropdownWrapper>
+    <DropdownWrapper key={`${props.num}-dropbtn`}>
+      <Num key={`${props.num}-num`}>{props.num}</Num>
       {props.num && (
-        <DropdownMenu>
-          {[...Array(props.num)].map((e, i) => (
-            <DropdownList key={i + 1}>{i + 1}</DropdownList>
-          ))}
-        </DropdownMenu>
+        <>
+          <DropdownMenu isOpenDropdown={props.isOpenDropdown}>
+            {[...Array(props.num)].map((e, i) => (
+              <DropdownList key={i + 1}>{i + 1}</DropdownList>
+            ))}
+          </DropdownMenu>
+          <Arrow
+            key={`${props.num}-arrow`}
+            isOpenDropdown={props.isOpenDropdown}
+            onClick={props.toggleDropdown}
+          />
+        </>
       )}
     </DropdownWrapper>
   );
