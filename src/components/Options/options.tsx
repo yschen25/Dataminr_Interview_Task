@@ -105,7 +105,7 @@ const Options = (props: {
             />
           </InnerWrapper>
           {opt.options?.map((item, idx2) => (
-            <>
+            <React.Fragment key={`${idx2}-fragment`}>
               <Option
                 key={`${idx2}-option`}
                 item={item}
@@ -120,7 +120,7 @@ const Options = (props: {
                 isOpenPanel={isOpenPanel[idx1]}
                 onClick={togglePanel(idx1)}
               />
-            </>
+            </React.Fragment>
           ))}
         </Wrapper>
       ))}
