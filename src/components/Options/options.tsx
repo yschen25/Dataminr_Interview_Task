@@ -39,11 +39,6 @@ const Options = (props: {
     updatePanelOpen(idx1, !(isOpenPanel[idx1] || false));
   };
 
-  const [isOpenDropdown, updateDropdown] = useState(false);
-  const toggleDropdown = () => {
-    updateDropdown(!isOpenDropdown);
-  };
-
   // Get the state of child options
   const initialState = item.options.map((opt) => ({
     enabled: true,
@@ -79,6 +74,12 @@ const Options = (props: {
         }
       }
     };
+
+  // Toggle dropdown button
+  const [isOpenDropdown, updateDropdown] = useState(false);
+  const toggleDropdown = () => {
+    updateDropdown(!isOpenDropdown);
+  };
 
   return (
     <>
